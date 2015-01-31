@@ -26,18 +26,7 @@ class GameScene: SKScene {
     }
     
     override func mouseDown(theEvent: NSEvent) {
-        /* Called when a mouse click occurs */
         
-        let location = theEvent.locationInNode(self)
-        
-        let sprite = SKSpriteNode(imageNamed:"Spaceship")
-        sprite.position = location;
-        sprite.setScale(0.5)
-        
-        let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-        sprite.runAction(SKAction.repeatActionForever(action))
-        
-        self.addChild(sprite)
     }
     
     override func update(currentTime: CFTimeInterval) {
