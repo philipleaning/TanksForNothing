@@ -130,25 +130,29 @@ class GameScene: SKScene {
         }
     }
     
-    func player1Fire(currentTime: CFTimeInterval) {
+    func bulletMake(currentTime: CFTimeInterval) -> SKShapeNode {
         let bullet = SKShapeNode(circleOfRadius: 5)
         bullet.fillColor = NSColor.blackColor()
         bullet.strokeColor = NSColor.blackColor()
-        bullet.position = CGPoint(x: player1Sprite.position.x + bulletOffset * player1Sprite.direction.dx, y: player1Sprite.position.y + bulletOffset * player1Sprite.direction.dy)
         bullet.physicsBody = SKPhysicsBody(circleOfRadius: 5)
+        
+        return bullet
+    }
+    
+    func player1Fire(currentTime: CFTimeInterval) {
+        let bullet = bulletMake(currentTime)
+        bullet.position = CGPoint(x: player1Sprite.position.x + bulletOffset * player1Sprite.direction.dx, y: player1Sprite.position.y + bulletOffset * player1Sprite.direction.dy)
         bullet.physicsBody?.velocity = CGVector(dx: bulletSpeed * player1Sprite.direction.dx, dy: bulletSpeed * player1Sprite.direction.dy)
         
         self.addChild(bullet)
         
         player1Bullets.append(bullet,currentTime)
+        
     }
     
     func player2Fire(currentTime: CFTimeInterval) {
-        let bullet = SKShapeNode(circleOfRadius: 5)
-        bullet.fillColor = NSColor.blackColor()
-        bullet.strokeColor = NSColor.blackColor()
+        let bullet = bulletMake(currentTime)
         bullet.position = CGPoint(x: player2Sprite.position.x + bulletOffset * player2Sprite.direction.dx, y: player2Sprite.position.y + bulletOffset * player2Sprite.direction.dy)
-        bullet.physicsBody = SKPhysicsBody(circleOfRadius: 5)
         bullet.physicsBody?.velocity = CGVector(dx: bulletSpeed * player2Sprite.direction.dx, dy: bulletSpeed * player2Sprite.direction.dy)
         
         self.addChild(bullet)
