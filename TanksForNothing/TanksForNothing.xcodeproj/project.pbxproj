@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51AD3CC21A7D8697007DA49B /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD3CC11A7D8697007DA49B /* MenuScene.swift */; };
+		51AD3CC41A7D871C007DA49B /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51AD3CC31A7D871C007DA49B /* MenuScene.sks */; };
 		A63B75051A7D10790093ACE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75041A7D10790093ACE3 /* AppDelegate.swift */; };
 		A63B75071A7D10790093ACE3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75061A7D10790093ACE3 /* GameScene.swift */; };
 		A63B75091A7D10790093ACE3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A63B75081A7D10790093ACE3 /* GameScene.sks */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		51AD3CC11A7D8697007DA49B /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		51AD3CC31A7D871C007DA49B /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		A63B74FF1A7D10790093ACE3 /* TanksForNothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TanksForNothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63B75031A7D10790093ACE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A63B75041A7D10790093ACE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,9 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				A63B75041A7D10790093ACE3 /* AppDelegate.swift */,
+				51AD3CC11A7D8697007DA49B /* MenuScene.swift */,
 				A63B75061A7D10790093ACE3 /* GameScene.swift */,
 				A63B75231A7D206C0093ACE3 /* Set.swift */,
 				A63B75081A7D10790093ACE3 /* GameScene.sks */,
+				51AD3CC31A7D871C007DA49B /* MenuScene.sks */,
 				A63B750A1A7D10790093ACE3 /* Images.xcassets */,
 				A63B750C1A7D10790093ACE3 /* MainMenu.xib */,
 				A63B75021A7D10790093ACE3 /* Supporting Files */,
@@ -198,6 +204,7 @@
 				A63B75091A7D10790093ACE3 /* GameScene.sks in Resources */,
 				A63B750B1A7D10790093ACE3 /* Images.xcassets in Resources */,
 				A63B750E1A7D10790093ACE3 /* MainMenu.xib in Resources */,
+				51AD3CC41A7D871C007DA49B /* MenuScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A63B75071A7D10790093ACE3 /* GameScene.swift in Sources */,
+				51AD3CC21A7D8697007DA49B /* MenuScene.swift in Sources */,
 				A63B75051A7D10790093ACE3 /* AppDelegate.swift in Sources */,
 				A63B75241A7D206C0093ACE3 /* Set.swift in Sources */,
 			);
@@ -405,6 +413,7 @@
 				A63B751F1A7D10790093ACE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A63B75201A7D10790093ACE3 /* Build configuration list for PBXNativeTarget "TanksForNothingTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +422,7 @@
 				A63B75221A7D10790093ACE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

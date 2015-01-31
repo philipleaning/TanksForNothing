@@ -8,7 +8,6 @@
 
 import SpriteKit
 
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     let player1Sprite = SKSpriteNode(imageNamed: "Spaceship")
     
@@ -39,6 +38,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var startTimeOut:   Bool            = false
     var timeOutStart:   CFTimeInterval  = CFTimeInterval.infinity
     var timeOut:        CFTimeInterval  = 3
+    
+    let wallThickness: CGFloat = 2
     
     override func didMoveToView(view: SKView) {
         physicsWorld.gravity = CGVector.zeroVector
@@ -92,9 +93,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         walls.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRectMake(0, 0, self.frame.width, self.frame.height))
         walls.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
         walls.physicsBody?.restitution = 0.0
-
+        
         
         self.addChild(walls)
+        
+        drawWall(CGPoint(x: 20, y: 20), end: CGPoint(x: 100, y: 100))
+    }
+    
+    func drawWall(start: CGPoint, end: CGPoint) {
+        let vector = CGVector(dx: end.x - start.x, dy: end.y - start.y)
+        let mag = hypot(vector.dx, vector.dy) / (2*wallThickness)
+        
+        let vAlong = CGVector(dx: vector.dx / mag, dy: vector.dy / mag)
+        let vPerp = CGVector(dx: -vAlong.dy, dy: vAlong.dx)
+        
+        
+        let point0  = CGPoint(x: start.x - vAlong.dx + vPerp.dx , y: start.y - vAlong.dy + vPerp.dy)
+        let point1  = CGPoint(x: end.x   + vAlong.dx + vPerp.dx , y: end.y   + vAlong.dy + vPerp.dy)
+        let point2  = CGPoint(x: end.x   + vAlong.dx - vPerp.dx , y: end.y   + vAlong.dy - vPerp.dy)
+        let point3  = CGPoint(x: start.x - vAlong.dx - vPerp.dx , y: start.y - vAlong.dy - vPerp.dy)
+        
+        let path = CGPathCreateMutable()
+        CGPathMoveToPoint(path, nil, point0.x, point0.y)
+        CGPathAddLineToPoint(path, nil, point1.x, point1.y)
+        CGPathAddLineToPoint(path, nil, point2.x, point2.y)
+        CGPathAddLineToPoint(path, nil, point3.x, point3.y)
+        CGPathCloseSubpath(path)
+        
+        let wall = SKShapeNode(path: path)
+        wall.fillColor = NSColor.blackColor()
+        wall.position = CGPoint(x: (start.x + end.x)/CGFloat(2) , y: (start.y + end.y)/CGFloat(2))
+        wall.physicsBody = SKPhysicsBody(polygonFromPath: path)
+        wall.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
+        wall.physicsBody?.dynamic = false
+        self.addChild(wall)
     }
     
     func killWorld() {
