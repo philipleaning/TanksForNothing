@@ -33,16 +33,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player1Bullets: [(SKShapeNode,CFTimeInterval)] = [(SKShapeNode,CFTimeInterval)]()
     var player2Bullets: [(SKShapeNode,CFTimeInterval)] = []
     
+    var player1Score: UInt64 = 0
+    var player2Score: UInt64 = 0
+    
+    var startTimeOut:   Bool            = false
+    var timeOutStart:   CFTimeInterval  = CFTimeInterval.infinity
+    var timeOut:        CFTimeInterval  = 3
+    
     override func didMoveToView(view: SKView) {
         physicsWorld.gravity = CGVector.zeroVector
         self.physicsWorld.contactDelegate = self
         
         setUpWorld()
+        
     }
     
     func setUpWorld() {
         self.removeAllChildren()
         
+        // Add score label after deleting it
+        let scoreLabel = SKLabelNode(fontNamed: "Helvetica")
+        scoreLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMaxY(self.frame)*0.9)
+        scoreLabel.text = "Player 1: \(player1Score)    Player 2: \(player2Score)"
+
+        self.addChild(scoreLabel)
+
         // set up player 1 sprite
         player1Sprite.position = CGPoint(x: CGRectGetMinX(self.frame), y: CGRectGetMidY(self.frame))
         player1Sprite.zRotation = 0
@@ -70,6 +85,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(player2Sprite)
         
         bulletOffset = player1Sprite.frame.height/2.0 + 7
+    }
+    
+    func killWorld() {
+        
+        // Update score
+        if player1Sprite.parent != nil {
+            player1Score++
+        }
+        if player2Sprite.parent != nil {
+            player2Score++
+        }
+        
+        setUpWorld()
     }
     
     func playerSpriteMake() {
@@ -100,6 +128,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if characters.contains(Character("p")) {
             setUpWorld()
+        }
+        
+        if startTimeOut {
+            timeOutStart = currentTime
+            startTimeOut = false
+        }
+        
+        if timeOutStart.distanceTo(currentTime) > timeOut {
+            timeOutStart = CFTimeInterval.infinity
+            killWorld()
         }
     }
     
@@ -206,7 +244,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         contact.bodyA.node?.removeFromParent()
         contact.bodyB.node?.removeFromParent()
         
-        setUpWorld()
+        
+        startTimeOut = true
+        
         /*
         if let nameA = contact.bodyA.node?.name {
             if let nameB = contact.bodyB.node?.name {
