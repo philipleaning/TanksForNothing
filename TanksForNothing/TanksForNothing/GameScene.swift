@@ -65,8 +65,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player1Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
         player1Sprite.physicsBody?.dynamic = true
         player1Sprite.physicsBody?.categoryBitMask       = SKNodeBitMask.Player.rawValue
-        player1Sprite.physicsBody?.contactTestBitMask    = SKNodeBitMask.Bullet.rawValue + SKNodeBitMask.Wall.rawValue
-        
+        player1Sprite.physicsBody?.contactTestBitMask    = SKNodeBitMask.Bullet.rawValue
         player1Sprite.name = kPlayer1Name
         
         self.addChild(player1Sprite)
@@ -78,7 +77,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player2Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
         player2Sprite.physicsBody?.dynamic = true
         player1Sprite.physicsBody?.categoryBitMask       = SKNodeBitMask.Player.rawValue
-        player1Sprite.physicsBody?.contactTestBitMask    = SKNodeBitMask.Bullet.rawValue + SKNodeBitMask.Wall.rawValue
+        player1Sprite.physicsBody?.contactTestBitMask    = SKNodeBitMask.Bullet.rawValue
         
         player2Sprite.name = kPlayer2Name
         
@@ -155,6 +154,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if timeOutStart.distanceTo(currentTime) > timeOut {
             timeOutStart = CFTimeInterval.infinity
+            player1Bullets.removeAll(keepCapacity: false)
+            player2Bullets.removeAll(keepCapacity: false)
             killWorld()
         }
     }
@@ -211,6 +212,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bullet.strokeColor = NSColor.blackColor()
         bullet.physicsBody = SKPhysicsBody(circleOfRadius: 5)
         
+        // Category is bullet
+        bullet.physicsBody?.categoryBitMask = SKNodeBitMask.Bullet.rawValue
+        // Collides with player and wall
+        bullet.physicsBody?.collisionBitMask = SKNodeBitMask.Player.rawValue + SKNodeBitMask.Wall.rawValue
+        // Notifications sent on player collisions only
         bullet.physicsBody?.contactTestBitMask  = SKNodeBitMask.Player.rawValue
         bullet.physicsBody?.restitution = 1.0
         bullet.physicsBody?.friction = 0.0
