@@ -1,0 +1,416 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A63B75051A7D10790093ACE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75041A7D10790093ACE3 /* AppDelegate.swift */; };
+		A63B75071A7D10790093ACE3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75061A7D10790093ACE3 /* GameScene.swift */; };
+		A63B75091A7D10790093ACE3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A63B75081A7D10790093ACE3 /* GameScene.sks */; };
+		A63B750B1A7D10790093ACE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63B750A1A7D10790093ACE3 /* Images.xcassets */; };
+		A63B750E1A7D10790093ACE3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63B750C1A7D10790093ACE3 /* MainMenu.xib */; };
+		A63B751A1A7D10790093ACE3 /* TanksForNothingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75191A7D10790093ACE3 /* TanksForNothingTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A63B75141A7D10790093ACE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A63B74F71A7D10790093ACE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A63B74FE1A7D10790093ACE3;
+			remoteInfo = TanksForNothing;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A63B74FF1A7D10790093ACE3 /* TanksForNothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TanksForNothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A63B75031A7D10790093ACE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A63B75041A7D10790093ACE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A63B75061A7D10790093ACE3 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		A63B75081A7D10790093ACE3 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		A63B750A1A7D10790093ACE3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A63B750D1A7D10790093ACE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A63B75131A7D10790093ACE3 /* TanksForNothingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TanksForNothingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A63B75181A7D10790093ACE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A63B75191A7D10790093ACE3 /* TanksForNothingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanksForNothingTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A63B74FC1A7D10790093ACE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A63B75101A7D10790093ACE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A63B74F61A7D10790093ACE3 = {
+			isa = PBXGroup;
+			children = (
+				A63B75011A7D10790093ACE3 /* TanksForNothing */,
+				A63B75161A7D10790093ACE3 /* TanksForNothingTests */,
+				A63B75001A7D10790093ACE3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A63B75001A7D10790093ACE3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A63B74FF1A7D10790093ACE3 /* TanksForNothing.app */,
+				A63B75131A7D10790093ACE3 /* TanksForNothingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A63B75011A7D10790093ACE3 /* TanksForNothing */ = {
+			isa = PBXGroup;
+			children = (
+				A63B75041A7D10790093ACE3 /* AppDelegate.swift */,
+				A63B75061A7D10790093ACE3 /* GameScene.swift */,
+				A63B75081A7D10790093ACE3 /* GameScene.sks */,
+				A63B750A1A7D10790093ACE3 /* Images.xcassets */,
+				A63B750C1A7D10790093ACE3 /* MainMenu.xib */,
+				A63B75021A7D10790093ACE3 /* Supporting Files */,
+			);
+			path = TanksForNothing;
+			sourceTree = "<group>";
+		};
+		A63B75021A7D10790093ACE3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A63B75031A7D10790093ACE3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A63B75161A7D10790093ACE3 /* TanksForNothingTests */ = {
+			isa = PBXGroup;
+			children = (
+				A63B75191A7D10790093ACE3 /* TanksForNothingTests.swift */,
+				A63B75171A7D10790093ACE3 /* Supporting Files */,
+			);
+			path = TanksForNothingTests;
+			sourceTree = "<group>";
+		};
+		A63B75171A7D10790093ACE3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A63B75181A7D10790093ACE3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A63B74FE1A7D10790093ACE3 /* TanksForNothing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A63B751D1A7D10790093ACE3 /* Build configuration list for PBXNativeTarget "TanksForNothing" */;
+			buildPhases = (
+				A63B74FB1A7D10790093ACE3 /* Sources */,
+				A63B74FC1A7D10790093ACE3 /* Frameworks */,
+				A63B74FD1A7D10790093ACE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TanksForNothing;
+			productName = TanksForNothing;
+			productReference = A63B74FF1A7D10790093ACE3 /* TanksForNothing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A63B75121A7D10790093ACE3 /* TanksForNothingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A63B75201A7D10790093ACE3 /* Build configuration list for PBXNativeTarget "TanksForNothingTests" */;
+			buildPhases = (
+				A63B750F1A7D10790093ACE3 /* Sources */,
+				A63B75101A7D10790093ACE3 /* Frameworks */,
+				A63B75111A7D10790093ACE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A63B75151A7D10790093ACE3 /* PBXTargetDependency */,
+			);
+			name = TanksForNothingTests;
+			productName = TanksForNothingTests;
+			productReference = A63B75131A7D10790093ACE3 /* TanksForNothingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A63B74F71A7D10790093ACE3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = bluetatami;
+				TargetAttributes = {
+					A63B74FE1A7D10790093ACE3 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					A63B75121A7D10790093ACE3 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = A63B74FE1A7D10790093ACE3;
+					};
+				};
+			};
+			buildConfigurationList = A63B74FA1A7D10790093ACE3 /* Build configuration list for PBXProject "TanksForNothing" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A63B74F61A7D10790093ACE3;
+			productRefGroup = A63B75001A7D10790093ACE3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A63B74FE1A7D10790093ACE3 /* TanksForNothing */,
+				A63B75121A7D10790093ACE3 /* TanksForNothingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A63B74FD1A7D10790093ACE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A63B75091A7D10790093ACE3 /* GameScene.sks in Resources */,
+				A63B750B1A7D10790093ACE3 /* Images.xcassets in Resources */,
+				A63B750E1A7D10790093ACE3 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A63B75111A7D10790093ACE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A63B74FB1A7D10790093ACE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A63B75071A7D10790093ACE3 /* GameScene.swift in Sources */,
+				A63B75051A7D10790093ACE3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A63B750F1A7D10790093ACE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A63B751A1A7D10790093ACE3 /* TanksForNothingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A63B75151A7D10790093ACE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A63B74FE1A7D10790093ACE3 /* TanksForNothing */;
+			targetProxy = A63B75141A7D10790093ACE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A63B750C1A7D10790093ACE3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A63B750D1A7D10790093ACE3 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A63B751B1A7D10790093ACE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A63B751C1A7D10790093ACE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A63B751E1A7D10790093ACE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TanksForNothing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A63B751F1A7D10790093ACE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TanksForNothing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A63B75211A7D10790093ACE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TanksForNothingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TanksForNothing.app/Contents/MacOS/TanksForNothing";
+			};
+			name = Debug;
+		};
+		A63B75221A7D10790093ACE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TanksForNothingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TanksForNothing.app/Contents/MacOS/TanksForNothing";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A63B74FA1A7D10790093ACE3 /* Build configuration list for PBXProject "TanksForNothing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A63B751B1A7D10790093ACE3 /* Debug */,
+				A63B751C1A7D10790093ACE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A63B751D1A7D10790093ACE3 /* Build configuration list for PBXNativeTarget "TanksForNothing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A63B751E1A7D10790093ACE3 /* Debug */,
+				A63B751F1A7D10790093ACE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A63B75201A7D10790093ACE3 /* Build configuration list for PBXNativeTarget "TanksForNothingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A63B75211A7D10790093ACE3 /* Debug */,
+				A63B75221A7D10790093ACE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A63B74F71A7D10790093ACE3 /* Project object */;
+}
