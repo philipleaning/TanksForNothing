@@ -95,6 +95,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         clearBullets(currentTime)
+        
+        if characters.contains(Character("p")) {
+            setUpWorld()
+        }
     }
     
     func updatePlayer1(currentTime: CFTimeInterval) {
@@ -199,6 +203,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         contact.bodyA.node?.removeFromParent()
         contact.bodyB.node?.removeFromParent()
+        
+        setUpWorld()
         /*
         if let nameA = contact.bodyA.node?.name {
             if let nameB = contact.bodyB.node?.name {
