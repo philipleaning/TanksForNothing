@@ -23,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let angularSpeed: CGFloat   =   0.05
     
     var bulletOffset: CGFloat   = 0.0 // reset in setup world
-    let bulletSpeed:    CGFloat = 700.0
+    let bulletSpeed:    CGFloat = 900.0
     
     let reloadTime:      CFTimeInterval = 0.2
     let bulletLifeTime:  CFTimeInterval = 10
@@ -59,7 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(scoreLabel)
 
         // set up player 1 sprite
-        player1Sprite.position = CGPoint(x: CGRectGetMinX(self.frame), y: CGRectGetMidY(self.frame))
+        player1Sprite.position = CGPoint(x: 0.1*CGRectGetMaxX(self.frame), y: CGRectGetMidY(self.frame))
         player1Sprite.zRotation = 0
         player1Sprite.setScale(playerScale)
         player1Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
@@ -72,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(player1Sprite)
         
         // set up player 2 sprite
-        player2Sprite.position = CGPoint(x: CGRectGetMaxX(self.frame), y: CGRectGetMidY(self.frame))
+        player2Sprite.position = CGPoint(x: 0.9*CGRectGetMaxX(self.frame), y: CGRectGetMidY(self.frame))
         player2Sprite.zRotation = 0
         player2Sprite.setScale(playerScale)
         player2Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
@@ -85,6 +85,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(player2Sprite)
         
         bulletOffset = player1Sprite.frame.height/2.0 + 7
+        
+        // Add walls
+        let walls = SKShapeNode(rect: CGRectMake(0, 0, self.frame.width, self.frame.height))
+        walls.position = CGPoint(x: CGRectGetMinX(self.frame), y: CGRectGetMinY(self.frame))
+        walls.strokeColor = NSColor.blackColor()
+        walls.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRectMake(0, 0, self.frame.width, self.frame.height))
+        walls.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
+        walls.physicsBody?.restitution = 0.0
+
+        
+        self.addChild(walls)
     }
     
     func killWorld() {
@@ -111,23 +122,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         updatePlayer1(currentTime)
         updatePlayer2(currentTime)
-        if characters.contains(Character("q")) &&
-            lastPlayer1Fire.distanceTo(currentTime) > reloadTime &&
-            player1Bullets.count < 5 {
-            player1Fire(currentTime)
-            lastPlayer1Fire = currentTime
+        
+        if player1Sprite.parent != nil {
+            if characters.contains(Character("q")) &&
+                lastPlayer1Fire.distanceTo(currentTime) > reloadTime &&
+                player1Bullets.count < 5 {
+                    player1Fire(currentTime)
+                    lastPlayer1Fire = currentTime
+            }
         }
-        if characters.contains(Character("m")) &&
-            lastPlayer2Fire.distanceTo(currentTime) > reloadTime &&
-            player2Bullets.count < 5 {
-            player2Fire(currentTime)
-            lastPlayer2Fire = currentTime
+        if player2Sprite.parent != nil {
+            if characters.contains(Character("m")) &&
+                lastPlayer2Fire.distanceTo(currentTime) > reloadTime &&
+                player2Bullets.count < 5 {
+                    player2Fire(currentTime)
+                    lastPlayer2Fire = currentTime
+            }
         }
         
         clearBullets(currentTime)
         
         if characters.contains(Character("p")) {
-            setUpWorld()
+            if CFTimeInterval.infinity == timeOutStart {
+                setUpWorld()
+            }
         }
         
         if startTimeOut {
@@ -193,8 +211,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bullet.strokeColor = NSColor.blackColor()
         bullet.physicsBody = SKPhysicsBody(circleOfRadius: 5)
         
-        bullet.physicsBody?.collisionBitMask    = SKNodeBitMask.Bullet.rawValue
         bullet.physicsBody?.contactTestBitMask  = SKNodeBitMask.Player.rawValue
+        bullet.physicsBody?.restitution = 1.0
+        bullet.physicsBody?.friction = 0.0
         
         bullet.name = kBulletName
         
@@ -241,6 +260,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
+        
         contact.bodyA.node?.removeFromParent()
         contact.bodyB.node?.removeFromParent()
         
