@@ -13,6 +13,7 @@
 		A63B750B1A7D10790093ACE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63B750A1A7D10790093ACE3 /* Images.xcassets */; };
 		A63B750E1A7D10790093ACE3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63B750C1A7D10790093ACE3 /* MainMenu.xib */; };
 		A63B751A1A7D10790093ACE3 /* TanksForNothingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75191A7D10790093ACE3 /* TanksForNothingTests.swift */; };
+		A63B75241A7D206C0093ACE3 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75231A7D206C0093ACE3 /* Set.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		A63B75131A7D10790093ACE3 /* TanksForNothingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TanksForNothingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63B75181A7D10790093ACE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A63B75191A7D10790093ACE3 /* TanksForNothingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanksForNothingTests.swift; sourceTree = "<group>"; };
+		A63B75231A7D206C0093ACE3 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				A63B75041A7D10790093ACE3 /* AppDelegate.swift */,
 				A63B75061A7D10790093ACE3 /* GameScene.swift */,
+				A63B75231A7D206C0093ACE3 /* Set.swift */,
 				A63B75081A7D10790093ACE3 /* GameScene.sks */,
 				A63B750A1A7D10790093ACE3 /* Images.xcassets */,
 				A63B750C1A7D10790093ACE3 /* MainMenu.xib */,
@@ -214,6 +217,7 @@
 			files = (
 				A63B75071A7D10790093ACE3 /* GameScene.swift in Sources */,
 				A63B75051A7D10790093ACE3 /* AppDelegate.swift in Sources */,
+				A63B75241A7D206C0093ACE3 /* Set.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
