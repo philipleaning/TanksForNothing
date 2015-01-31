@@ -45,6 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // set up player 1 sprite
         player1Sprite.position = CGPoint(x: CGRectGetMinX(self.frame), y: CGRectGetMidY(self.frame))
+        player1Sprite.zRotation = 0
         player1Sprite.setScale(playerScale)
         player1Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
         player1Sprite.physicsBody?.dynamic = true
@@ -57,6 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // set up player 2 sprite
         player2Sprite.position = CGPoint(x: CGRectGetMaxX(self.frame), y: CGRectGetMidY(self.frame))
+        player2Sprite.zRotation = 0
         player2Sprite.setScale(playerScale)
         player2Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
         player2Sprite.physicsBody?.dynamic = true
