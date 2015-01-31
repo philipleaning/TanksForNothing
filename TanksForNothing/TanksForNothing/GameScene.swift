@@ -8,16 +8,21 @@
 
 import SpriteKit
 
+
 class GameScene: SKScene {
+    
+    
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         physicsWorld.gravity = CGVector.zeroVector
         
-        self.addChild(myLabel)
+        let player1Sprite = SKSpriteNode(imageNamed: "Spaceship")
+        player1Sprite.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        player1Sprite.setScale(0.5)
+        player1Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
+        
+        
+        
+        self.addChild(player1Sprite)
     }
     
     override func mouseDown(theEvent: NSEvent) {
