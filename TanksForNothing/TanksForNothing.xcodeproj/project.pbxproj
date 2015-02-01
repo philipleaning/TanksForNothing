@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		51AD3CC21A7D8697007DA49B /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD3CC11A7D8697007DA49B /* MenuScene.swift */; };
 		51AD3CC41A7D871C007DA49B /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51AD3CC31A7D871C007DA49B /* MenuScene.sks */; };
+		51AD3CC61A7DA005007DA49B /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD3CC51A7DA005007DA49B /* Level.swift */; };
 		A63B75051A7D10790093ACE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75041A7D10790093ACE3 /* AppDelegate.swift */; };
 		A63B75071A7D10790093ACE3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75061A7D10790093ACE3 /* GameScene.swift */; };
 		A63B75091A7D10790093ACE3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A63B75081A7D10790093ACE3 /* GameScene.sks */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		51AD3CC11A7D8697007DA49B /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		51AD3CC31A7D871C007DA49B /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		51AD3CC51A7DA005007DA49B /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		A63B74FF1A7D10790093ACE3 /* TanksForNothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TanksForNothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63B75031A7D10790093ACE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A63B75041A7D10790093ACE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				A63B75041A7D10790093ACE3 /* AppDelegate.swift */,
 				51AD3CC11A7D8697007DA49B /* MenuScene.swift */,
 				A63B75061A7D10790093ACE3 /* GameScene.swift */,
+				51AD3CC51A7DA005007DA49B /* Level.swift */,
 				A63B75231A7D206C0093ACE3 /* Set.swift */,
 				A63B75081A7D10790093ACE3 /* GameScene.sks */,
 				51AD3CC31A7D871C007DA49B /* MenuScene.sks */,
@@ -225,6 +228,7 @@
 				A63B75071A7D10790093ACE3 /* GameScene.swift in Sources */,
 				51AD3CC21A7D8697007DA49B /* MenuScene.swift in Sources */,
 				A63B75051A7D10790093ACE3 /* AppDelegate.swift in Sources */,
+				51AD3CC61A7DA005007DA49B /* Level.swift in Sources */,
 				A63B75241A7D206C0093ACE3 /* Set.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
