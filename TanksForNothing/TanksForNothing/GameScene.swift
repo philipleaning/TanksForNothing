@@ -17,12 +17,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let playerScale: CGFloat    =   0.1
     
-    let forwardSpeed: CGFloat   = 300.0
-    let backwardSpeed:CGFloat   = 150.0
-    let angularSpeed: CGFloat   =   0.05
+    let forwardSpeed: CGFloat   = 150.0
+    let backwardSpeed:CGFloat   = 100.0
+    let angularSpeed: CGFloat   =   0.08
     
     var bulletOffset: CGFloat   = 0.0 // reset in setup world
-    let bulletSpeed:    CGFloat = 900.0
+    let bulletSpeed:    CGFloat = 400.0
     
     let reloadTime:      CFTimeInterval = 0.2
     let bulletLifeTime:  CFTimeInterval = 10
