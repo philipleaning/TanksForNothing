@@ -8,7 +8,6 @@
 
 import SpriteKit
 
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     let player1Sprite = SKSpriteNode(imageNamed: "Spaceship")
     
@@ -40,6 +39,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timeOutStart:   CFTimeInterval  = CFTimeInterval.infinity
     var timeOut:        CFTimeInterval  = 3
     
+    let wallThickness: CGFloat = 2
+    
     override func didMoveToView(view: SKView) {
         physicsWorld.gravity = CGVector.zeroVector
         self.physicsWorld.contactDelegate = self
@@ -58,8 +59,52 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.addChild(scoreLabel)
 
+        
+        bulletOffset = player1Sprite.frame.height/2.0 + 7
+        
+        // Add walls
+        let walls = SKShapeNode(rect: CGRectMake(0, 0, self.frame.width, self.frame.height))
+        walls.position = CGPoint(x: CGRectGetMinX(self.frame), y: CGRectGetMinY(self.frame))
+        walls.strokeColor = NSColor.blackColor()
+        walls.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRectMake(0, 0, self.frame.width, self.frame.height))
+        walls.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
+        walls.physicsBody?.restitution = 0.0
+        
+        
+        self.addChild(walls)
+        
+        var level1 = Level(width: 9, height: 7)
+        
+        level1.addWall(startIntersectionX: 0, startIntersectionY: 4, endIntersectionX: 1, endIntersectionY: 4)
+        level1.addWall(startIntersectionX: 1, startIntersectionY: 1, endIntersectionX: 1, endIntersectionY: 4)
+        
+        
+        level1.addWall(startIntersectionX: 2, startIntersectionY: 1, endIntersectionX: 2, endIntersectionY: 3)
+        level1.addWall(startIntersectionX: 2, startIntersectionY: 1, endIntersectionX: 7, endIntersectionY: 1)
+        level1.addWall(startIntersectionX: 7, startIntersectionY: 1, endIntersectionX: 7, endIntersectionY: 3)
+        
+        level1.addWall(startIntersectionX: 3, startIntersectionY: 3, endIntersectionX: 3, endIntersectionY: 4)
+        
+        level1.addWall(startIntersectionX: 6, startIntersectionY: 3, endIntersectionX: 6, endIntersectionY: 4)
+        
+        level1.addWall(startIntersectionX: 2, startIntersectionY: 4, endIntersectionX: 2, endIntersectionY: 6)
+        level1.addWall(startIntersectionX: 2, startIntersectionY: 6, endIntersectionX: 7, endIntersectionY: 6)
+        level1.addWall(startIntersectionX: 7, startIntersectionY: 4, endIntersectionX: 7, endIntersectionY: 6)
+        
+        
+        level1.addWall(startIntersectionX: 8, startIntersectionY: 3, endIntersectionX: 9, endIntersectionY: 3)
+        level1.addWall(startIntersectionX: 8, startIntersectionY: 3, endIntersectionX: 8, endIntersectionY: 6)
+        
+        
+        
+        for pointPair in level1.getPoints(forFrame: self.frame) {
+            drawWall(pointPair.0, end: pointPair.1)
+        }
+        
+        let playerStartingPositions = level1.getMidSquarePoints(forFrame: self.frame)
+        
         // set up player 1 sprite
-        player1Sprite.position = CGPoint(x: 0.1*CGRectGetMaxX(self.frame), y: CGRectGetMidY(self.frame))
+        player1Sprite.position = playerStartingPositions.leftSquare
         player1Sprite.zRotation = 0
         player1Sprite.setScale(playerScale)
         player1Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
@@ -71,7 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(player1Sprite)
         
         // set up player 2 sprite
-        player2Sprite.position = CGPoint(x: 0.9*CGRectGetMaxX(self.frame), y: CGRectGetMidY(self.frame))
+        player2Sprite.position = playerStartingPositions.rightSquare
         player2Sprite.zRotation = 0
         player2Sprite.setScale(playerScale)
         player2Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
@@ -82,19 +127,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player2Sprite.name = kPlayer2Name
         
         self.addChild(player2Sprite)
-        
-        bulletOffset = player1Sprite.frame.height/2.0 + 7
-        
-        // Add walls
-        let walls = SKShapeNode(rect: CGRectMake(0, 0, self.frame.width, self.frame.height))
-        walls.position = CGPoint(x: CGRectGetMinX(self.frame), y: CGRectGetMinY(self.frame))
-        walls.strokeColor = NSColor.blackColor()
-        walls.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRectMake(0, 0, self.frame.width, self.frame.height))
-        walls.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
-        walls.physicsBody?.restitution = 0.0
 
+    }
+    
+    func drawWall(start: CGPoint, end: CGPoint) {
+        let vector = CGVector(dx: end.x - start.x, dy: end.y - start.y)
+        let mag = hypot(vector.dx, vector.dy)
         
-        self.addChild(walls)
+        let multiplier = wallThickness / 2.0
+        
+        let vAlong = CGVector(dx: multiplier * vector.dx / mag, dy: multiplier * vector.dy / mag)
+        let vPerp = CGVector(dx: -vAlong.dy, dy: vAlong.dx)
+        
+        // Add the vector so that it would draw at twice the length of original
+        // Weirdness in Scene conversion
+        // Find fix later
+        let point0  = CGPoint(x: start.x - vAlong.dx + vPerp.dx , y: start.y - vAlong.dy + vPerp.dy)
+        let point1  = CGPoint(x: end.x   + vAlong.dx + vPerp.dx + vector.dx, y: end.y   + vAlong.dy + vPerp.dy + vector.dy)
+        let point2  = CGPoint(x: end.x   + vAlong.dx - vPerp.dx + vector.dx, y: end.y   + vAlong.dy - vPerp.dy + vector.dy)
+        let point3  = CGPoint(x: start.x - vAlong.dx - vPerp.dx , y: start.y - vAlong.dy - vPerp.dy)
+        
+        let path = CGPathCreateMutable()
+        CGPathMoveToPoint(path, nil, point0.x, point0.y)
+        CGPathAddLineToPoint(path, nil, point1.x, point1.y)
+        CGPathAddLineToPoint(path, nil, point2.x, point2.y)
+        CGPathAddLineToPoint(path, nil, point3.x, point3.y)
+        CGPathCloseSubpath(path)
+        
+        let wall = SKShapeNode(path: path)
+        wall.fillColor = NSColor.blackColor()
+        wall.strokeColor = NSColor.clearColor()
+        let position = CGPoint(x: min(start.x, end.x) , y: min(start.y, end.y))
+        wall.position = position
+        wall.physicsBody = SKPhysicsBody(polygonFromPath: path)
+        wall.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
+        wall.physicsBody?.dynamic = false
+        self.addChild(wall)
     }
     
     func killWorld() {
@@ -121,6 +189,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         updatePlayer1(currentTime)
         updatePlayer2(currentTime)
+        
+        player1Sprite.physicsBody?.angularVelocity = 0
+        player2Sprite.physicsBody?.angularVelocity = 0
         
         if player1Sprite.parent != nil {
             if characters.contains(Character("q")) &&
@@ -273,27 +344,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         startTimeOut = true
         
-        /*
-        if let nameA = contact.bodyA.node?.name {
-            if let nameB = contact.bodyB.node?.name {
-                switch (nameA, nameB) {
-                case (kPlayer1Name, kPlayer2Name):
-                    fallthrough
-                case (kPlayer2Name, kPlayer1Name):
-                    fallthrough
-                case (kPlayer1Name, kBulletName):
-                    fallthrough
-                case (kPlayer2Name, kBulletName):
-                    fallthrough
-                case (_, kPlayer1Name):
-                    
-                default:
-                    break
-                }
-            }
-        }wwwwwwww
-        */
     }
+    
+
 }
 
 // keyboard handling
