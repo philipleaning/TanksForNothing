@@ -52,5 +52,14 @@ struct Level {
         
         return pointPairsArray
     }
+    
+    func getMidSquarePoints(forFrame frame: CGRect) -> (leftSquare: CGPoint, rightSquare: CGPoint) {
+        let squareHeight    = frame.height  / CGFloat(height * 2)
+        let squareWidth     = frame.width   / CGFloat(width  * 2)
+        
+        let squaresY   = frame.height / CGFloat(2.0)
+        
+        return (CGPoint(x:squareWidth, y:squaresY), CGPoint(x: frame.width - squareWidth, y: squaresY))
+    }
 }
 

@@ -60,7 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(scoreLabel)
 
         // set up player 1 sprite
-        player1Sprite.position = CGPoint(x: 0.1*CGRectGetMaxX(self.frame), y: CGRectGetMidY(self.frame))
+        player1Sprite.position = playerStartingPositions.leftSquare
         player1Sprite.zRotation = 0
         player1Sprite.setScale(playerScale)
         player1Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
@@ -72,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(player1Sprite)
         
         // set up player 2 sprite
-        player2Sprite.position = CGPoint(x: 0.9*CGRectGetMaxX(self.frame), y: CGRectGetMidY(self.frame))
+        player2Sprite.position = playerStartingPositions.rightSquare
         player2Sprite.zRotation = 0
         player2Sprite.setScale(playerScale)
         player2Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
