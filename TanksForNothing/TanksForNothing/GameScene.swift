@@ -60,7 +60,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(scoreLabel)
 
         
-        bulletOffset = player1Sprite.frame.height/2.0 + 7
         
         // Add walls
         let walls = SKShapeNode(rect: CGRectMake(0, 0, self.frame.width, self.frame.height))
@@ -105,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // set up player 1 sprite
         player1Sprite.position = playerStartingPositions.leftSquare
-        player1Sprite.zRotation = 0
+        player1Sprite.zRotation = CGFloat(M_PI)
         player1Sprite.setScale(playerScale)
         player1Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
         player1Sprite.physicsBody?.dynamic = true
@@ -127,7 +126,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player2Sprite.name = kPlayer2Name
         
         self.addChild(player2Sprite)
-
+        
+        // Set bullet offset based on sprite size
+        bulletOffset = player1Sprite.frame.height/2.0 + 7
     }
     
     func drawWall(start: CGPoint, end: CGPoint) {
