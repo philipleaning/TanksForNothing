@@ -305,27 +305,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         startTimeOut = true
         
-        /*
-        if let nameA = contact.bodyA.node?.name {
-            if let nameB = contact.bodyB.node?.name {
-                switch (nameA, nameB) {
-                case (kPlayer1Name, kPlayer2Name):
-                    fallthrough
-                case (kPlayer2Name, kPlayer1Name):
-                    fallthrough
-                case (kPlayer1Name, kBulletName):
-                    fallthrough
-                case (kPlayer2Name, kBulletName):
-                    fallthrough
-                case (_, kPlayer1Name):
-                    
-                default:
-                    break
-                }
-            }
-        }wwwwwwww
-        */
     }
+    
+
 }
 
 // keyboard handling
