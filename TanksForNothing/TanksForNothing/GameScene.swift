@@ -102,15 +102,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func drawWall(start: CGPoint, end: CGPoint) {
         let vector = CGVector(dx: end.x - start.x, dy: end.y - start.y)
-        let mag = hypot(vector.dx, vector.dy) / (2*wallThickness)
+        let mag = hypot(vector.dx, vector.dy)
         
-        let vAlong = CGVector(dx: vector.dx / mag, dy: vector.dy / mag)
+        let multiplier = wallThickness / 2.0
+        
+        let vAlong = CGVector(dx: multiplier * vector.dx / mag, dy: multiplier * vector.dy / mag)
         let vPerp = CGVector(dx: -vAlong.dy, dy: vAlong.dx)
         
-        
+        // Add the vector so that it would draw at twice the length of original
+        // Weirdness in Scene conversion
+        // Find fix later
         let point0  = CGPoint(x: start.x - vAlong.dx + vPerp.dx , y: start.y - vAlong.dy + vPerp.dy)
-        let point1  = CGPoint(x: end.x   + vAlong.dx + vPerp.dx , y: end.y   + vAlong.dy + vPerp.dy)
-        let point2  = CGPoint(x: end.x   + vAlong.dx - vPerp.dx , y: end.y   + vAlong.dy - vPerp.dy)
+        let point1  = CGPoint(x: end.x   + vAlong.dx + vPerp.dx + vector.dx, y: end.y   + vAlong.dy + vPerp.dy + vector.dy)
+        let point2  = CGPoint(x: end.x   + vAlong.dx - vPerp.dx + vector.dx, y: end.y   + vAlong.dy - vPerp.dy + vector.dy)
         let point3  = CGPoint(x: start.x - vAlong.dx - vPerp.dx , y: start.y - vAlong.dy - vPerp.dy)
         
         let path = CGPathCreateMutable()
