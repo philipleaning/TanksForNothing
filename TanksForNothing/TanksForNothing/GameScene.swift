@@ -140,12 +140,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let wall = SKShapeNode(path: path)
         wall.fillColor = NSColor.blackColor()
+        wall.strokeColor = NSColor.clearColor()
         let position = CGPoint(x: min(start.x, end.x) , y: min(start.y, end.y))
         wall.position = position
         wall.physicsBody = SKPhysicsBody(polygonFromPath: path)
         wall.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
         wall.physicsBody?.dynamic = false
-        wall.setScale(2.0)
         self.addChild(wall)
     }
     
