@@ -75,24 +75,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var level1 = Level(width: 9, height: 7)
         
-        level1.addWalls(x: 0, y: 0, right: false, top: false)
-        level1.addWalls(x: 1, y: 0, right: false, top: false)
-        level1.addWalls(x: 2, y: 0, right: false, top: true )
-        level1.addWalls(x: 3, y: 0, right: false, top: true )
-        level1.addWalls(x: 4, y: 0, right: false, top: false)
-        level1.addWalls(x: 5, y: 0, right: false, top: true )
-        level1.addWalls(x: 0, y: 1, right: true , top: false)
-        level1.addWalls(x: 1, y: 1, right: true , top: false)
-        level1.addWalls(x: 3, y: 1, right: true , top: false)
-        level1.addWalls(x: 0, y: 2, right: true , top: false)
-        level1.addWalls(x: 1, y: 2, right: true , top: false)
-        level1.addWalls(x: 2, y: 2, right: true , top: false)
-        level1.addWalls(x: 3, y: 2, right: true , top: false)
-        level1.addWalls(x: 0, y: 3, right: true , top: true )
-        level1.addWalls(x: 2, y: 3, right: true , top: false)
-        level1.addWalls(x: 5, y: 3, right: true , top: false)
-
+        level1.addWall(startIntersectionX: 0, startIntersectionY: 4, endIntersectionX: 1, endIntersectionY: 4)
+        level1.addWall(startIntersectionX: 1, startIntersectionY: 1, endIntersectionX: 1, endIntersectionY: 4)
         
+        
+        level1.addWall(startIntersectionX: 2, startIntersectionY: 1, endIntersectionX: 2, endIntersectionY: 3)
+        level1.addWall(startIntersectionX: 2, startIntersectionY: 1, endIntersectionX: 7, endIntersectionY: 1)
+        level1.addWall(startIntersectionX: 7, startIntersectionY: 1, endIntersectionX: 7, endIntersectionY: 3)
+        
+        level1.addWall(startIntersectionX: 3, startIntersectionY: 3, endIntersectionX: 3, endIntersectionY: 4)
+        
+        level1.addWall(startIntersectionX: 6, startIntersectionY: 3, endIntersectionX: 6, endIntersectionY: 4)
+        
+        level1.addWall(startIntersectionX: 2, startIntersectionY: 4, endIntersectionX: 2, endIntersectionY: 6)
+        level1.addWall(startIntersectionX: 2, startIntersectionY: 6, endIntersectionX: 7, endIntersectionY: 6)
+        level1.addWall(startIntersectionX: 7, startIntersectionY: 4, endIntersectionX: 7, endIntersectionY: 6)
+        
+        
+        level1.addWall(startIntersectionX: 8, startIntersectionY: 3, endIntersectionX: 9, endIntersectionY: 3)
+        level1.addWall(startIntersectionX: 8, startIntersectionY: 3, endIntersectionX: 8, endIntersectionY: 6)
         
         
         

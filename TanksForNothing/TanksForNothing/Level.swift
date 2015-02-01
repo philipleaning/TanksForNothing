@@ -12,18 +12,16 @@ struct Level {
     let width:  Int
     let height: Int
     
-    var wallsArray: [(rightWall: Bool, topWall: Bool)]
+    var wallsArray: [(startPoint: (Int, Int), endPoint: (Int, Int))] = []
     
     init(width: Int, height: Int) {
         self.width  = width
         self.height = height
-        // Don't have last column and top row
-        wallsArray = Array(count: width * height, repeatedValue: (false,false))
+        
     }
     
-    mutating func addWalls(#x: Int, y: Int, right: Bool, top: Bool) {
-        let index = (y * width + x)
-        wallsArray[index] = (rightWall: right, topWall: top)
+    mutating func addWall(#startIntersectionX: Int, startIntersectionY: Int, endIntersectionX: Int, endIntersectionY: Int) {
+        wallsArray.append(startPoint: (startIntersectionX, startIntersectionY), endPoint: (endIntersectionX, endIntersectionY))
     }
     
     func getPoints(forFrame frame: CGRect) -> [(CGPoint, CGPoint)] {
@@ -31,24 +29,11 @@ struct Level {
         let squareHeight    = frame.height  / CGFloat(height * 2)
         let squareWidth     = frame.width   / CGFloat(width  * 2)
         
-        for (index, square) in enumerate(wallsArray) {
-            let squareX = CGFloat(index % width )
-            let squareY = CGFloat(index / height)
+        pointPairsArray = wallsArray.map({(startPoint: (Int, Int), endPoint: (Int, Int)) in
             
-            if square.topWall {
-                let point0 = CGPoint(x: squareWidth * (squareX    ), y: squareHeight * (squareY + 1))
-                let point1 = CGPoint(x: squareWidth * (squareX + 1), y: squareHeight * (squareY + 1))
-                
-                pointPairsArray.append(point0, point1)
-            }
             
-            if square.rightWall {
-                let point0 = CGPoint(x: squareWidth * (squareX + 1), y: squareHeight * (squareY    ))
-                let point1 = CGPoint(x: squareWidth * (squareX + 1), y: squareHeight * (squareY + 1))
-                
-                pointPairsArray.append(point0, point1)
-            }
-        }
+            return (CGPoint(x: squareWidth * CGFloat(startPoint.0), y: squareHeight * CGFloat(startPoint.1)), CGPoint(x: squareWidth * CGFloat(endPoint.0), y: squareHeight * CGFloat(endPoint.1)))
+        })
         
         return pointPairsArray
     }
