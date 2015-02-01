@@ -97,7 +97,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(walls)
         
-        drawWall(CGPoint(x: 20, y: 20), end: CGPoint(x: 100, y: 100))
+        var level1 = Level(width: 7, height: 7)
+        
+        level1.addWalls(0, y: 0, right: true, top: true)
+        level1.addWalls(0, y: 1, right: true, top: false)
+        level1.addWalls(0, y: 2, right: true, top: false)
+        level1.addWalls(0, y: 3, right: true, top: true)
+        
+        for pointPair in level1.getPoints(forFrame: CGRectMake(0, 0, 700, 700)) {
+//            drawWall(pointPair.0, end: pointPair.1)
+        }
+        
+        drawWall(CGPoint(x: 50, y: 100), end: CGPoint(x: 150, y: 100))
+        drawWall(CGPoint(x: 100, y: 150), end: CGPoint(x: 200, y: 150))
+        drawWall(CGPoint(x: 50, y: 200), end: CGPoint(x: 200, y: 200))
+//        drawWall(CGPoint(x: 50, y: 300), end: CGPoint(x: 150, y: 300))
     }
     
     func drawWall(start: CGPoint, end: CGPoint) {
@@ -126,10 +140,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let wall = SKShapeNode(path: path)
         wall.fillColor = NSColor.blackColor()
-        wall.position = CGPoint(x: (start.x + end.x)/CGFloat(2) , y: (start.y + end.y)/CGFloat(2))
+        let position = CGPoint(x: min(start.x, end.x) , y: min(start.y, end.y))
+        wall.position = position
         wall.physicsBody = SKPhysicsBody(polygonFromPath: path)
         wall.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
         wall.physicsBody?.dynamic = false
+        wall.setScale(2.0)
         self.addChild(wall)
     }
     

@@ -32,7 +32,7 @@ class MenuScene: SKScene {
         if playButton.containsPoint(theEvent.locationInNode(self)) {
             if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
                 /* Set the scale mode to scale to fit the window */
-                scene.scaleMode = .AspectFill
+                scene.scaleMode = SKSceneScaleMode.Fill
                 
                 let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
 
