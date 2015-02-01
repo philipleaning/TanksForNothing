@@ -174,6 +174,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         updatePlayer1(currentTime)
         updatePlayer2(currentTime)
         
+        player1Sprite.physicsBody?.angularVelocity = 0
+        player2Sprite.physicsBody?.angularVelocity = 0
+        
         if player1Sprite.parent != nil {
             if characters.contains(Character("q")) &&
                 lastPlayer1Fire.distanceTo(currentTime) > reloadTime &&
