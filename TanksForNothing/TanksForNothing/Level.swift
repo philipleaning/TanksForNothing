@@ -12,7 +12,7 @@ struct Level {
     let width:  Int
     let height: Int
     
-    var wallsArray: [(rightWall: Bool, bottomWall: Bool)]
+    var wallsArray: [(rightWall: Bool, topWall: Bool)]
     
     init(width: Int, height: Int) {
         self.width  = width
@@ -21,28 +21,36 @@ struct Level {
         wallsArray = Array(count: (width - 1) * (height - 1), repeatedValue: (false,false))
     }
     
-    mutating func addWalls(x: Int, y: Int, right: Bool, bottom: Bool) {
-        wallsArray[(y * (width - 1)) + x] = (rightWall: right, bottomWall: bottom)
+    mutating func addWalls(x: Int, y: Int, right: Bool, top: Bool) {
+        let index = (y * (width - 1)) + x
+        wallsArray[index] = (rightWall: right, topWall: top)
     }
     
     func getPoints(forFrame frame: CGRect) -> [(CGPoint, CGPoint)] {
-        var pointsArray = [(CGPoint, CGPoint)]()
+        var pointPairsArray = [(CGPoint, CGPoint)]()
+        let squareHeight    = frame.height  / CGFloat(height)
+        let squareWidth     = frame.width   / CGFloat(width )
         
-        for square in wallsArray {
-            if square.bottomWall {
-//                let point1 = CGPoint s(x: , y: )
+        for (index, square) in enumerate(wallsArray) {
+            let squareX = CGFloat(index % (width  - 1))
+            let squareY = CGFloat(index / (height - 1))
+            
+            if square.topWall {
+                let point0 = CGPoint(x: squareWidth * (squareX    ), y: squareHeight * (squareY + 1))
+                let point1 = CGPoint(x: squareWidth * (squareX + 1), y: squareHeight * (squareY + 1))
                 
-//                pointsArray.append()
+                pointPairsArray.append(point0, point1)
+            }
+            
+            if square.rightWall {
+                let point0 = CGPoint(x: squareWidth * (squareX + 1), y: squareHeight * (squareY    ))
+                let point1 = CGPoint(x: squareWidth * (squareX + 1), y: squareHeight * (squareY + 1))
+                
+                pointPairsArray.append(point0, point1)
             }
         }
         
-        return pointsArray
+        return pointPairsArray
     }
 }
 
-
-
-struct Wall {
-    var startPoint: CGPoint
-    var endPoint: CGPoint
-}
