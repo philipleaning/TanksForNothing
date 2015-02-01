@@ -18,22 +18,22 @@ struct Level {
         self.width  = width
         self.height = height
         // Don't have last column and top row
-        wallsArray = Array(count: (width - 1) * (height - 1), repeatedValue: (false,false))
+        wallsArray = Array(count: width * height, repeatedValue: (false,false))
     }
     
-    mutating func addWalls(x: Int, y: Int, right: Bool, top: Bool) {
-        let index = (y * (width - 1)) + x
+    mutating func addWalls(#x: Int, y: Int, right: Bool, top: Bool) {
+        let index = (y * width + x)
         wallsArray[index] = (rightWall: right, topWall: top)
     }
     
     func getPoints(forFrame frame: CGRect) -> [(CGPoint, CGPoint)] {
         var pointPairsArray = [(CGPoint, CGPoint)]()
-        let squareHeight    = frame.height  / CGFloat(height)
-        let squareWidth     = frame.width   / CGFloat(width )
+        let squareHeight    = frame.height  / CGFloat(height * 2)
+        let squareWidth     = frame.width   / CGFloat(width  * 2)
         
         for (index, square) in enumerate(wallsArray) {
-            let squareX = CGFloat(index % (width  - 1))
-            let squareY = CGFloat(index / (height - 1))
+            let squareX = CGFloat(index % width )
+            let squareY = CGFloat(index / height)
             
             if square.topWall {
                 let point0 = CGPoint(x: squareWidth * (squareX    ), y: squareHeight * (squareY + 1))

@@ -59,6 +59,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.addChild(scoreLabel)
 
+        
+        bulletOffset = player1Sprite.frame.height/2.0 + 7
+        
+        // Add walls
+        let walls = SKShapeNode(rect: CGRectMake(0, 0, self.frame.width, self.frame.height))
+        walls.position = CGPoint(x: CGRectGetMinX(self.frame), y: CGRectGetMinY(self.frame))
+        walls.strokeColor = NSColor.blackColor()
+        walls.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRectMake(0, 0, self.frame.width, self.frame.height))
+        walls.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
+        walls.physicsBody?.restitution = 0.0
+        
+        
+        self.addChild(walls)
+        
+        var level1 = Level(width: 9, height: 7)
+        
+        level1.addWalls(x: 0, y: 0, right: false, top: false)
+        level1.addWalls(x: 1, y: 0, right: false, top: false)
+        level1.addWalls(x: 2, y: 0, right: false, top: true )
+        level1.addWalls(x: 3, y: 0, right: false, top: true )
+        level1.addWalls(x: 4, y: 0, right: false, top: false)
+        level1.addWalls(x: 5, y: 0, right: false, top: true )
+        level1.addWalls(x: 0, y: 1, right: true , top: false)
+        level1.addWalls(x: 1, y: 1, right: true , top: false)
+        level1.addWalls(x: 3, y: 1, right: true , top: false)
+        level1.addWalls(x: 0, y: 2, right: true , top: false)
+        level1.addWalls(x: 1, y: 2, right: true , top: false)
+        level1.addWalls(x: 2, y: 2, right: true , top: false)
+        level1.addWalls(x: 3, y: 2, right: true , top: false)
+        level1.addWalls(x: 0, y: 3, right: true , top: true )
+        level1.addWalls(x: 2, y: 3, right: true , top: false)
+        level1.addWalls(x: 5, y: 3, right: true , top: false)
+
+        
+        
+        
+        
+        for pointPair in level1.getPoints(forFrame: self.frame) {
+            drawWall(pointPair.0, end: pointPair.1)
+        }
+        
+        let playerStartingPositions = level1.getMidSquarePoints(forFrame: self.frame)
+        
         // set up player 1 sprite
         player1Sprite.position = playerStartingPositions.leftSquare
         player1Sprite.zRotation = 0
@@ -83,35 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player2Sprite.name = kPlayer2Name
         
         self.addChild(player2Sprite)
-        
-        bulletOffset = player1Sprite.frame.height/2.0 + 7
-        
-        // Add walls
-        let walls = SKShapeNode(rect: CGRectMake(0, 0, self.frame.width, self.frame.height))
-        walls.position = CGPoint(x: CGRectGetMinX(self.frame), y: CGRectGetMinY(self.frame))
-        walls.strokeColor = NSColor.blackColor()
-        walls.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRectMake(0, 0, self.frame.width, self.frame.height))
-        walls.physicsBody?.categoryBitMask = SKNodeBitMask.Wall.rawValue
-        walls.physicsBody?.restitution = 0.0
-        
-        
-        self.addChild(walls)
-        
-        var level1 = Level(width: 7, height: 7)
-        
-        level1.addWalls(0, y: 0, right: true, top: true)
-        level1.addWalls(0, y: 1, right: true, top: false)
-        level1.addWalls(0, y: 2, right: true, top: false)
-        level1.addWalls(0, y: 3, right: true, top: true)
-        
-        for pointPair in level1.getPoints(forFrame: CGRectMake(0, 0, 700, 700)) {
-//            drawWall(pointPair.0, end: pointPair.1)
-        }
-        
-        drawWall(CGPoint(x: 50, y: 100), end: CGPoint(x: 150, y: 100))
-        drawWall(CGPoint(x: 100, y: 150), end: CGPoint(x: 200, y: 150))
-        drawWall(CGPoint(x: 50, y: 200), end: CGPoint(x: 200, y: 200))
-//        drawWall(CGPoint(x: 50, y: 300), end: CGPoint(x: 150, y: 300))
+
     }
     
     func drawWall(start: CGPoint, end: CGPoint) {
