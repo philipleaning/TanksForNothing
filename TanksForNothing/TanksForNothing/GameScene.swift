@@ -120,8 +120,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player2Sprite.setScale(playerScale)
         player2Sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Spaceship"), size: player1Sprite.size)
         player2Sprite.physicsBody?.dynamic = true
-        player1Sprite.physicsBody?.categoryBitMask       = SKNodeBitMask.Player.rawValue
-        player1Sprite.physicsBody?.contactTestBitMask    = SKNodeBitMask.Bullet.rawValue
+        player2Sprite.physicsBody?.categoryBitMask       = SKNodeBitMask.Player.rawValue
+        player2Sprite.physicsBody?.contactTestBitMask    = SKNodeBitMask.Bullet.rawValue
         
         player2Sprite.name = kPlayer2Name
         
@@ -287,9 +287,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Category is bullet
         bullet.physicsBody?.categoryBitMask = SKNodeBitMask.Bullet.rawValue
         // Collides with player and wall
-        bullet.physicsBody?.collisionBitMask = SKNodeBitMask.Player.rawValue + SKNodeBitMask.Wall.rawValue
+        bullet.physicsBody?.collisionBitMask = SKNodeBitMask.Player.rawValue
         // Notifications sent on player collisions only
-        bullet.physicsBody?.contactTestBitMask  = SKNodeBitMask.Player.rawValue
+        bullet.physicsBody?.contactTestBitMask  = SKNodeBitMask.Player.rawValue + SKNodeBitMask.Wall.rawValue
         bullet.physicsBody?.restitution = 1.0
         bullet.physicsBody?.friction = 0.0
         
@@ -339,11 +339,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBeginContact(contact: SKPhysicsContact) {
         
-        contact.bodyA.node?.removeFromParent()
-        contact.bodyB.node?.removeFromParent()
+        if (SKNodeBitMask.Player.rawValue == contact.bodyA.categoryBitMask || (SKNodeBitMask.Player.rawValue == contact.bodyB.categoryBitMask)) {
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            
+            startTimeOut = true
+        }
+        
+        switch (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask) {
+        case (SKNodeBitMask.Player.rawValue, _):
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            
+            startTimeOut = true
+        case (_, SKNodeBitMask.Player.rawValue):
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            
+            startTimeOut = true
+        case (SKNodeBitMask.Bullet.rawValue, SKNodeBitMask.Wall.rawValue):
+            let oldVelocity         = contact.bodyA.velocity
+            let twiceDotProduct    = dotProduct(oldVelocity, contact.contactNormal) * CGFloat(2)
+            
+            contact.bodyA.velocity = CGVector(dx: oldVelocity.dx - contact.contactNormal.dx * twiceDotProduct, dy: oldVelocity.dy - contact.contactNormal.dy * twiceDotProduct)
+        case (SKNodeBitMask.Wall.rawValue, SKNodeBitMask.Bullet.rawValue):
+            let oldVelocity         = contact.bodyB.velocity
+            let twiceDotProduct     = dotProduct(oldVelocity, contact.contactNormal) * CGFloat(2)
+            
+            contact.bodyB.velocity = CGVector(dx: oldVelocity.dx - contact.contactNormal.dx * twiceDotProduct, dy: oldVelocity.dy - contact.contactNormal.dy * twiceDotProduct)
+        default:
+            break
+        }
         
         
-        startTimeOut = true
         
     }
     
@@ -387,6 +415,9 @@ let kPlayer1Name = "Player 1"
 let kPlayer2Name = "Player 2"
 let kBulletName  = "Bullet"
 
+func dotProduct(vectorA: CGVector, vectorB: CGVector) -> CGFloat {
+    return vectorA.dx * vectorB.dx + vectorA.dy * vectorB.dy
+}
 
 
 
