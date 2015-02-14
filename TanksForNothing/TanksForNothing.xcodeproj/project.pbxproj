@@ -16,7 +16,6 @@
 		A63B750B1A7D10790093ACE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63B750A1A7D10790093ACE3 /* Images.xcassets */; };
 		A63B750E1A7D10790093ACE3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63B750C1A7D10790093ACE3 /* MainMenu.xib */; };
 		A63B751A1A7D10790093ACE3 /* TanksForNothingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75191A7D10790093ACE3 /* TanksForNothingTests.swift */; };
-		A63B75241A7D206C0093ACE3 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B75231A7D206C0093ACE3 /* Set.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +42,6 @@
 		A63B75131A7D10790093ACE3 /* TanksForNothingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TanksForNothingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63B75181A7D10790093ACE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A63B75191A7D10790093ACE3 /* TanksForNothingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanksForNothingTests.swift; sourceTree = "<group>"; };
-		A63B75231A7D206C0093ACE3 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +87,6 @@
 				51AD3CC11A7D8697007DA49B /* MenuScene.swift */,
 				A63B75061A7D10790093ACE3 /* GameScene.swift */,
 				51AD3CC51A7DA005007DA49B /* Level.swift */,
-				A63B75231A7D206C0093ACE3 /* Set.swift */,
 				A63B75081A7D10790093ACE3 /* GameScene.sks */,
 				51AD3CC31A7D871C007DA49B /* MenuScene.sks */,
 				A63B750A1A7D10790093ACE3 /* Images.xcassets */,
@@ -229,7 +226,6 @@
 				51AD3CC21A7D8697007DA49B /* MenuScene.swift in Sources */,
 				A63B75051A7D10790093ACE3 /* AppDelegate.swift in Sources */,
 				51AD3CC61A7DA005007DA49B /* Level.swift in Sources */,
-				A63B75241A7D206C0093ACE3 /* Set.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

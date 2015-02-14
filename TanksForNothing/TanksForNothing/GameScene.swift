@@ -59,8 +59,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.addChild(scoreLabel)
 
-        
-        
         // Add walls
         let walls = SKShapeNode(rect: CGRectMake(0, 0, self.frame.width, self.frame.height))
         walls.position = CGPoint(x: CGRectGetMinX(self.frame), y: CGRectGetMinY(self.frame))
@@ -371,8 +369,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         }
         
-        
-        
     }
     
 
@@ -382,13 +378,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 extension GameScene {
     override func keyDown(theEvent: NSEvent) {
         if let eventChars = theEvent.charactersIgnoringModifiers {
-            characters.unionSet(Set<Character>(eventChars))
+            characters.unionInPlace(Set<Character>(eventChars))
         }
     }
     
     override func keyUp(theEvent: NSEvent) {
         if let eventChars = theEvent.charactersIgnoringModifiers {
-            characters.subtractSet(Set<Character>(eventChars))
+            characters.subtractInPlace(Set<Character>(eventChars))
         }
     }
     
